@@ -1,19 +1,6 @@
 <template>
   <Layout>
     <div style="min-height: 600px">
-      <el-card shadow="never" style="margin-bottom: 20px">
-        <el-input placeholder="请输入关键字" v-model="searchKey" clearable style="width: 300px"></el-input>
-        <el-button @click="search" icon="el-icon-search" style="margin-left: 10px" circle plain></el-button>
-        <el-button
-          @click="$share()"
-          icon="el-icon-share"
-          type="warning"
-          style="margin-left: 10px"
-          plain
-          circle
-        ></el-button>
-      </el-card>
-
       <div>
         <el-card
           shadow="hover"
@@ -25,25 +12,18 @@
             <el-row>
               <el-col :span="16">
                 <span>
-                  <a
+                  <g-link
+                    :to="`/project/detail/${edge.node.id}`"
                     style="text-decoration:none;cursor:pointer"
-                    @click="goDetails(edge.node.title)"
                   >
                     <i class="el-icon-service"></i>
                     &nbsp;&nbsp; {{edge.node.title}}
-                  </a>
+                  </g-link>
                 </span>
               </el-col>
               <el-col :span="8">
                 <div style="text-align: right;">
-                  <!-- @click="goGithub(edge.node.url)" -->
-                  <el-button style="padding: 3px 0" type="text" icon="el-icon-back">前往GitHub</el-button>
-                  <el-button
-                    @click="$share('/user/project/details/'+edge.node.title)"
-                    style="padding: 3px 0"
-                    type="text"
-                    icon="el-icon-share"
-                  ></el-button>
+                  <el-button @click="goGithub(edge.node.url)" style="padding: 3px 0" type="text" icon="el-icon-back">前往GitHub</el-button>
                 </div>
               </el-col>
             </el-row>
@@ -113,6 +93,7 @@ query($page: Int){
     edges{
       node{
         id
+        url
         title
         description
         updated_at
@@ -143,15 +124,9 @@ export default {
     // this.list()
   },
   methods: {
-    search() {
-      console.log("search");
-    },
-    // goDetails(name) {
-    //     this.$router.push("/user/project/details/" + name)
-    // },
-    // goGithub(url) {
-    //     window.open(url)
-    // }
+    goGithub(url) {
+        window.open(url)
+    }
   },
 };
 </script>

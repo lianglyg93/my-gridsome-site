@@ -2,15 +2,13 @@
   <Layout>
     <div style="min-height: 600px">
       <el-card shadow="never" style="margin-bottom: 20px">
-        <el-input placeholder="请输入关键字" v-model="searchKey" clearable style="width: 300px"></el-input>
-        <!-- @click="search" -->
-        <el-button icon="el-icon-search" style="margin-left: 10px" circle plain></el-button>
-
-        <!-- @click="$share()" -->
-        <el-button style="margin-left: 10px" icon="el-icon-share" type="warning" plain circle></el-button>
-
-        <!-- @click="goAdd" -->
-        <el-button type="primary" icon="el-icon-edit" round plain style="float: right;">写博文</el-button>
+        <g-link to="/blog-add" style="float: right;">
+          <el-button
+            type="primary"
+            icon="el-icon-edit"
+            >写博文</el-button
+          >
+        </g-link>
       </el-card>
       <div>
         <el-card
@@ -28,27 +26,32 @@
                     style="text-decoration:none;cursor:pointer"
                   >
                     <i class="el-icon-edit-outline"></i>
-                    &nbsp;&nbsp; {{edge.node.title}}
+                    &nbsp;&nbsp; {{ edge.node.title }}
                   </g-link>
                 </span>
               </el-col>
               <el-col :span="8">
                 <div style="text-align: right;">
-                  <!-- @click="$share('/user/blog/details/'+edge.node.id)" -->
-                  <el-button style="padding: 3px 0" type="text" icon="el-icon-share"></el-button>
-
                   <!-- @click="editBlog(index)" -->
-                  <el-button style="padding: 3px 0" type="text" icon="el-icon-edit"></el-button>
+                  <el-button
+                    style="padding: 3px 0"
+                    type="text"
+                    icon="el-icon-edit"
+                  ></el-button>
 
                   <!-- @click="deleteBlog(index)" -->
-                  <el-button style="padding: 3px 0" type="text" icon="el-icon-delete"></el-button>
+                  <el-button
+                    style="padding: 3px 0"
+                    type="text"
+                    icon="el-icon-delete"
+                  ></el-button>
                 </div>
               </el-col>
             </el-row>
           </div>
-          <div
-            style="font-size: 0.9rem;line-height: 1.5;color: #606c71;"
-          >最近更新 {{edge.node.updated_at | getDate}}</div>
+          <div style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
+            最近更新 {{ edge.node.updated_at | getDate }}
+          </div>
           <div
             style="font-size: 1.1rem;line-height: 1.5;color: #303133;padding: 10px 0px 0px 0px"
             v-html="getHtmlWrap(edge.node.description)"

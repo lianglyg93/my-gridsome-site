@@ -3,7 +3,7 @@
  * @Author: liangs
  * @Date: 2021-07-18 16:17:22
  * @LastEditors: liangs
- * @LastEditTime: 2021-07-20 01:41:16
+ * @LastEditTime: 2021-07-20 14:20:36
 -->
 <template>
   <Layout>
@@ -53,7 +53,7 @@ export default {
     return {};
   },
   computed: {
-    // 最后一次更新的博客
+    // 博客信息
     blog() {
       return this.$page.blog;
     },

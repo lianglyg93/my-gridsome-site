@@ -3,7 +3,7 @@
  * @Author: liangs
  * @Date: 2021-07-18 16:17:22
  * @LastEditors: liangs
- * @LastEditTime: 2021-07-20 01:38:03
+ * @LastEditTime: 2021-07-20 15:55:44
  */
 // This is where project configuration and plugin options are located.
 // Learn more: https://gridsome.org/docs/config
@@ -13,6 +13,7 @@
 
 module.exports = {
   siteName: "Gridsome",
+  siteDescription: '大前端',
   plugins: [
     {
       use: "@gridsome/source-strapi",
@@ -20,13 +21,6 @@ module.exports = {
         apiURL: "http://localhost:1337",
         queryLimit: 1000, // Defaults to 100
         contentTypes: ["blog", "project", "social", "follower"],
-        // singleTypes: ["impressum"],
-        // Possibility to login with a Strapi user,
-        // when content types are not publicly available (optional).
-        // loginData: {
-        //   identifier: "",
-        //   password: "",
-        // },
       },
     },
   ],
@@ -35,6 +29,12 @@ module.exports = {
       {
         path: "/blog/detail/:id",
         component: "./src/templates/Blog.vue",
+      },
+    ],
+     StrapiProject: [
+      {
+        path: "/project/detail/:id",
+        component: "./src/templates/Project.vue",
       },
     ],
   },

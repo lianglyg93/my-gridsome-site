@@ -1,3 +1,10 @@
+<!--
+ * @Author: liangs
+ * @Date: 2021-07-20 11:14:32
+ * @LastEditors: liangs
+ * @LastEditTime: 2021-07-20 16:07:10
+ * @Description: file content
+-->
 <template>
   <div>
     <el-card shadow="never">
@@ -9,9 +16,14 @@
           :key="menu.index"
           :index="menu.index"
         >
-          <g-link :to="menu.path" exact class="menu-link">
+          <g-link
+            :to="menu.path"
+            exact
+            class="menu-link"
+            :class="{ active: menu.path === active }"
+          >
             <i :class="menu.icon"></i>
-            <span slot="title">{{menu.title}}</span>
+            <span slot="title">{{ menu.title }}</span>
           </g-link>
         </li>
       </ul>
@@ -44,17 +56,11 @@ export default {
           path: "/blog",
         },
         {
-          index: "service",
+          index: "project",
           icon: "el-icon-service",
           title: "开源项目",
           path: "/project",
         },
-        // {
-        //   index: "help",
-        //   icon: "el-icon-printer",
-        //   title: "使用帮助",
-        //   path: "/",
-        // },
         {
           index: "socument",
           icon: "el-icon-document",
@@ -67,16 +73,12 @@ export default {
   computed: {},
 
   mounted() {
-    // let arr = this.$route.path.split("/");
-    // this.active = "/" + arr[1] + "/" + arr[2];
+    let arr = this.$route.path.split("/");
+    let path = arr[1] || "star";
+    console.log("path===", path);
+    this.active = "/" + path;
   },
-  methods: {
-    onSelect(index) {
-      console.log(index);
-      this.active = "star";
-      //   this.$router.push(index);
-    },
-  },
+  methods: {},
 };
 </script>
 <style scoped>
