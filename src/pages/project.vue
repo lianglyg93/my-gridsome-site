@@ -23,7 +23,12 @@
               </el-col>
               <el-col :span="8">
                 <div style="text-align: right;">
-                  <el-button @click="goGithub(edge.node.url)" style="padding: 3px 0" type="text" icon="el-icon-back">前往GitHub</el-button>
+                  <el-button
+                    @click="goGithub(edge.node.url)"
+                    style="padding: 3px 0"
+                    type="text"
+                    icon="el-icon-back"
+                  >前往GitHub</el-button>
                 </div>
               </el-col>
             </el-row>
@@ -110,6 +115,12 @@ query($page: Int){
 <script>
 import { Pager } from "gridsome";
 export default {
+  name: "projectPage",
+  metaInfo() {
+    return {
+      title: "project",
+    };
+  },
   components: {
     Pager,
   },
@@ -125,8 +136,8 @@ export default {
   },
   methods: {
     goGithub(url) {
-        window.open(url)
-    }
+      window.open(url);
+    },
   },
 };
 </script>

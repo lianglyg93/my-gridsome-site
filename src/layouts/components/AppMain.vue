@@ -7,22 +7,20 @@
 </template>
 
 <script>
-  export default {
-    name: 'AppMain',
-    computed: {
-
-    }
-  }
+export default {
+  name: "appmain",
+  computed: {},
+};
 </script>
 
 <style>
-  .fade-enter-active,
-  .fade-leave-active {
-    transition: opacity .2s;
-  }
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s;
+}
 
-  .fade-enter,
-  .fade-leave-to {
-    opacity: 0;
-  }
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
 </style>

@@ -2,7 +2,7 @@
  * @Author: liangs
  * @Date: 2021-07-20 11:14:32
  * @LastEditors: liangs
- * @LastEditTime: 2021-07-20 16:07:10
+ * @LastEditTime: 2021-07-21 01:18:24
  * @Description: file content
 -->
 <template>
@@ -16,12 +16,7 @@
           :key="menu.index"
           :index="menu.index"
         >
-          <g-link
-            :to="menu.path"
-            exact
-            class="menu-link"
-            :class="{ active: menu.path === active }"
-          >
+          <g-link :to="menu.path" exact class="menu-link" :class="{ active: menu.path === active }">
             <i :class="menu.icon"></i>
             <span slot="title">{{ menu.title }}</span>
           </g-link>
@@ -33,6 +28,7 @@
 
 <script>
 export default {
+  name: "sidebar",
   data() {
     return {
       active: "star",
@@ -44,10 +40,10 @@ export default {
           path: "/",
         },
         {
-          index: "social",
+          index: "contact",
           icon: "el-icon-mobile-phone",
           title: "社交圈",
-          path: "/social",
+          path: "/contact",
         },
         {
           index: "blog",
@@ -62,10 +58,10 @@ export default {
           path: "/project",
         },
         {
-          index: "socument",
+          index: "post",
           icon: "el-icon-document",
           title: "README.md",
-          path: "/",
+          path: "/post",
         },
       ],
     };

@@ -3,7 +3,7 @@
  * @Author: liangs
  * @Date: 2021-07-18 16:17:22
  * @LastEditors: liangs
- * @LastEditTime: 2021-07-20 15:55:44
+ * @LastEditTime: 2021-07-21 01:08:25
  */
 // This is where project configuration and plugin options are located.
 // Learn more: https://gridsome.org/docs/config
@@ -12,15 +12,23 @@
 // To restart press CTRL + C in terminal and run `gridsome develop`
 
 module.exports = {
-  siteName: "Gridsome",
-  siteDescription: '大前端',
+  siteName: "liangs",
+  siteDescription: "大前端",
   plugins: [
     {
       use: "@gridsome/source-strapi",
       options: {
         apiURL: "http://localhost:1337",
         queryLimit: 1000, // Defaults to 100
-        contentTypes: ["blog", "project", "social", "follower"],
+        contentTypes: ["blog", "project", "contact", "avatar"],
+        singleTypes: ["mysingle"],
+      },
+    },
+    {
+      use: "@gridsome/source-filesystem",
+      options: {
+        typeName: "BlogPost",
+        path: "./*.md",
       },
     },
   ],
@@ -31,10 +39,16 @@ module.exports = {
         component: "./src/templates/Blog.vue",
       },
     ],
-     StrapiProject: [
+    StrapiProject: [
       {
         path: "/project/detail/:id",
         component: "./src/templates/Project.vue",
+      },
+    ],
+    StrapiContact: [
+      {
+        path: "/contact/avatar/:id",
+        component: "./src/templates/Avatar.vue",
       },
     ],
   },

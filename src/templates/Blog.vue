@@ -3,7 +3,7 @@
  * @Author: liangs
  * @Date: 2021-07-18 16:17:22
  * @LastEditors: liangs
- * @LastEditTime: 2021-07-20 14:20:36
+ * @LastEditTime: 2021-07-21 01:16:38
 -->
 <template>
   <Layout>
@@ -49,6 +49,11 @@ query ($id: ID!){
 <script>
 export default {
   name: "blogTemplate",
+  metaInfo() {
+    return {
+      title: "blog",
+    };
+  },
   data() {
     return {};
   },

@@ -3,11 +3,7 @@
     <div style="min-height: 600px">
       <el-card shadow="never" style="margin-bottom: 20px">
         <g-link to="/blog-add" style="float: right;">
-          <el-button
-            type="primary"
-            icon="el-icon-edit"
-            >写博文</el-button
-          >
+          <el-button type="primary" icon="el-icon-edit">写博文</el-button>
         </g-link>
       </el-card>
       <div>
@@ -32,26 +28,20 @@
               </el-col>
               <el-col :span="8">
                 <div style="text-align: right;">
-                  <!-- @click="editBlog(index)" -->
-                  <el-button
-                    style="padding: 3px 0"
-                    type="text"
-                    icon="el-icon-edit"
-                  ></el-button>
-
                   <!-- @click="deleteBlog(index)" -->
                   <el-button
                     style="padding: 3px 0"
                     type="text"
+                    @click="deleteBlog(edge.node.id)"
                     icon="el-icon-delete"
                   ></el-button>
                 </div>
               </el-col>
             </el-row>
           </div>
-          <div style="font-size: 0.9rem;line-height: 1.5;color: #606c71;">
-            最近更新 {{ edge.node.updated_at | getDate }}
-          </div>
+          <div
+            style="font-size: 0.9rem;line-height: 1.5;color: #606c71;"
+          >最近更新 {{ edge.node.updated_at | getDate }}</div>
           <div
             style="font-size: 1.1rem;line-height: 1.5;color: #303133;padding: 10px 0px 0px 0px"
             v-html="getHtmlWrap(edge.node.description)"
@@ -86,8 +76,15 @@ query($page: Int){
 }
 </page-query>
 <script>
+import axios from "axios";
 import { Pager } from "gridsome";
 export default {
+  name: "blogPage",
+  metaInfo() {
+    return {
+      title: "blog",
+    };
+  },
   components: {
     Pager,
   },
@@ -95,6 +92,22 @@ export default {
     return {
       searchKey: "",
     };
+  },
+  methods: {
+    async deleteBlog(id) {
+      try {
+        const { data } = await axios.delete(
+          `${this.GRIDSOME_API_URL}/blogs/${id}`
+        );
+        this.$message({
+          message: "删除成功",
+          type: "success",
+        });
+        this.$router.push("/blog");
+      } catch {
+        this.$message.error("error submit!!");
+      }
+    },
   },
 };
 </script>

@@ -2,12 +2,12 @@
   <div>
     <section
       class="page-header"
-      :style="'background-image: linear-gradient(120deg, #155799, #159957);color: #ffffff;'"
+      :style="`background-image: url(${GRIDSOME_API_URL + userInfo.image.url})`"
     >
-      <h1 class="project-name">liangs</h1>
-      <h2 class="project-tagline">欢迎来到liangs的个人博客。</h2>
-      <a :href="'https://github.com/'+githubUsername" class="btn" target="_blank">GitHub主页</a>
-      <a href="https://github.com/GitHub-Laziji/vblog" class="btn" target="_blank">博客源码</a>
+      <h1 class="project-name">{{userInfo.name}}</h1>
+      <h2 class="project-tagline">{{userInfo.description}}</h2>
+      <a :href="userInfo.github" class="btn" target="_blank">GitHub主页</a>
+      <a :href="userInfo.code" class="btn" target="_blank">博客源码</a>
     </section>
 
     <section class="main-content">
@@ -25,20 +25,41 @@
     </section>
   </div>
 </template>
+<static-query>
+query {
+  single: allStrapiMysingle {
+    edges{
+      node{
+        name
+        github
+        image {
+          url
+        }
+        description
+        code
+      }
+    }
+  }
+}
+</static-query>
 <script>
 import Sidebar from "./components/Sidebar";
 import AppMain from "./components/AppMain";
 import Foot from "./components/Foot";
 export default {
+  name: "layoutPage",
   components: {
     Sidebar,
     AppMain,
     Foot,
   },
   data() {
-    return {
-      githubUsername: "lianglyg93",
-    };
+    return {};
+  },
+  computed: {
+    userInfo() {
+      return this.$static.single.edges[0].node;
+    },
   },
 };
 </script>

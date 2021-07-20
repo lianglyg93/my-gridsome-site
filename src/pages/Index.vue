@@ -3,7 +3,7 @@
  * @Author: liangs
  * @Date: 2021-07-18 16:17:22
  * @LastEditors: liangs
- * @LastEditTime: 2021-07-19 23:23:02
+ * @LastEditTime: 2021-07-21 01:17:30
 -->
 <template>
   <Layout>
@@ -54,6 +54,12 @@ query{
 </page-query>
 <script>
 export default {
+  name: "homePage",
+  metaInfo() {
+    return {
+      title: "home",
+    };
+  },
   data() {
     return {};
   },
