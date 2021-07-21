@@ -2,7 +2,7 @@
   <div>
     <section
       class="page-header"
-      :style="`background-image: url(${GRIDSOME_API_URL + userInfo.image.url})`"
+      :style="`background-image: url(${userInfo.image.url})`"
     >
       <h1 class="project-name">{{userInfo.name}}</h1>
       <h2 class="project-tagline">{{userInfo.description}}</h2>
