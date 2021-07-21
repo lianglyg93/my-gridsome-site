@@ -20,7 +20,7 @@
                     style=" text-decoration:none;cursor:pointer"
                   >TA的主页</a>
                   <br />
-                  <img :src="fanInfo.img" style="width: 100%;border-radius:5px;margin-top: 5px" />
+                  <img :src="fanInfo.img.url" style="width: 100%;border-radius:5px;margin-top: 5px" />
                 </el-card>
               </el-col>
             </el-row>
@@ -67,7 +67,7 @@
                     style=" text-decoration:none;cursor:pointer"
                   >TA的主页</a>
                   <br />
-                  <img :src="followInfo.img" style="width: 100%;border-radius:5px;margin-top: 5px" />
+                  <img :src="followInfo.img.url" style="width: 100%;border-radius:5px;margin-top: 5px" />
                 </el-card>
               </el-col>
             </el-row>
@@ -105,13 +105,17 @@
           fans{
             id
             name
-            img
+            img {
+              url
+            }
             html
           }
           follows{
             id
             name
-            img
+            img {
+              url
+            }
             html
           }
         }

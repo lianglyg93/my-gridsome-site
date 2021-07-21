@@ -1,10 +1,3 @@
-/*
- * @Descripttion:
- * @Author: liangs
- * @Date: 2021-07-18 16:17:22
- * @LastEditors: liangs
- * @LastEditTime: 2021-07-21 01:08:25
- */
 // This is where project configuration and plugin options are located.
 // Learn more: https://gridsome.org/docs/config
 
@@ -18,7 +11,7 @@ module.exports = {
     {
       use: "@gridsome/source-strapi",
       options: {
-        apiURL: "http://localhost:1337",
+        apiURL: process.env.GRIDSOME_API_URL,
         queryLimit: 1000, // Defaults to 100
         contentTypes: ["blog", "project", "contact", "avatar"],
         singleTypes: ["mysingle"],

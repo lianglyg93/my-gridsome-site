@@ -3,7 +3,7 @@
  * @Author: liangs
  * @Date: 2021-07-18 16:17:22
  * @LastEditors: liangs
- * @LastEditTime: 2021-07-21 01:16:22
+ * @LastEditTime: 2021-07-21 16:39:17
 -->
 <template>
   <Layout>
@@ -19,7 +19,7 @@
       </div>
       <el-row>
         <el-col :span="9" style="padding: 0px 10px 20px 0px">
-          <img :src="avatar.img" style="width: 100%;border-radius:5px;" />
+          <img :src="avatar.img.url" style="width: 100%;border-radius:5px;" />
           <div style="padding: 10px">
             <font style="font-size: 26px;line-height: 40px;font-weight: 600">
               {{avatar.name}}
@@ -71,7 +71,9 @@ query ($id: ID!){
  avatar: strapiAvatar (id: $id) {
     id
     name
-    img
+    img {
+          url
+    }
     html
     blog
     location
